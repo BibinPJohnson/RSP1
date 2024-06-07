@@ -12,19 +12,19 @@ export const InitTheme: React.FC = () => {
         __html: `
   (function () {
     function getImplicitPreference() {
-      var mediaQuery = '(prefers-color-scheme: light)'
+      var mediaQuery = '(prefers-color-scheme: dark)'
       var mql = window.matchMedia(mediaQuery)
       var hasImplicitPreference = typeof mql.matches === 'boolean'
 
       if (hasImplicitPreference) {
-        return mql.matches ? 'light' : 'light'
+        return mql.matches ? 'dark' : 'light'
       }
 
       return null
     }
 
     function themeIsValid(theme) {
-      return theme === 'light' || theme === 'light'
+      return theme === 'light' || theme === 'dark'
     }
 
     var themeToSet = '${defaultTheme}'

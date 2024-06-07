@@ -13,30 +13,6 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidatePost } from './hooks/revalidatePost'
 
-import path from 'path';
-
-interface BuildConfig {
-    admin: {
-        css: string;
-    };
-}
-
-const buildConfig = (config: BuildConfig): BuildConfig => {
-    // Your build logic here
-    return config;
-};
-
-const config = buildConfig({
-    admin: {
-        css: path.resolve(__dirname, './hooks/index.scss'),
-    },
-});
-
-export default config;
-
-
-
-
 export const Posts: CollectionConfig = {
   slug: 'posts',
   admin: {
@@ -57,10 +33,10 @@ export const Posts: CollectionConfig = {
     drafts: true,
   },
   access: {
-    read: () => true, // Allow anyone to read posts
-    update: () => true, // Allow anyone to update posts
-    create: () => true, // Allow anyone to create posts
-    delete: () => true, // Allow anyone to delete posts
+    read: adminsOrPublished,
+    update: admins,
+    create: admins,
+    delete: admins,
   },
   fields: [
     {

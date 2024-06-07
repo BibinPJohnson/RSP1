@@ -23,7 +23,6 @@ export interface Config {
     settings: Settings
     header: Header
     footer: Footer
-    logincontents: LoginContent
   }
 }
 export interface Page {
@@ -444,7 +443,7 @@ export interface Post {
 export interface User {
   id: string
   name?: string | null
-  roles?: ('admin' | 'user' | 'supervisor')[] | null
+  roles?: ('admin' | 'user')[] | null
   updatedAt: string
   createdAt: string
   email: string
@@ -659,7 +658,6 @@ export interface Settings {
   updatedAt?: string | null
   createdAt?: string | null
 }
-
 export interface Header {
   id: string
   navItems?:
@@ -677,13 +675,6 @@ export interface Header {
         id?: string | null
       }[]
     | null
-    image?:
-    | {
-        alt?: string | null
-        url?: string | null
-        filename?: string | null
-      }
-    | null   
   updatedAt?: string | null
   createdAt?: string | null
 }
@@ -706,10 +697,6 @@ export interface Footer {
     | null
   updatedAt?: string | null
   createdAt?: string | null
-}
-
-export interface LoginContent{
-Values:string
 }
 
 declare module 'payload' {

@@ -2,13 +2,6 @@ import { LINK_FIELDS } from './link'
 
 export const HEADER = `
   Header {
-    image {
-      alt
-      url
-      filename
-      width
-      height
-    }
     navItems {
       link ${LINK_FIELDS({ disableAppearance: true })}
 		}

@@ -2,7 +2,6 @@
 
 .header {
   padding: var(--base) 0;
-  background-color: #605E5EA3;
 }
 
 .wrap {
@@ -13,10 +12,11 @@
 }
 
 .logo {
-  width: auto;
+  width: 150px;
 }
 
-.header_logo_wrapper {
-  max-width: 75px;
-  max-height: 50px;
+:global([data-theme="light"]) {
+  .logo {
+    filter: invert(1);
+  }
 }

@@ -92,15 +92,6 @@ export const Projects: CollectionConfig = {
         }
       },
     },
-    {
-      name: 'assignedUser', // New field for assigning the project to a user
-      type: 'relationship',
-      relationTo: 'users',
-      hasMany: false,
-      admin: {
-        position: 'sidebar',
-      },
-    },
     slugField(),
   ],
 }

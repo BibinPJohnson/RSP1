@@ -34,28 +34,26 @@ export const LogoutPage: React.FC<{
   return (
     <Fragment>
       {(error || success) && (
-        <div className='flex justify-center pt-10'>
-          <div>
-            <h1>{error || success}</h1>
-            <p>
-              {'What would you like to do next? '}
-              {hasPostsPage && hasProjectsPage && <Fragment>{'Browse '}</Fragment>}
-              {hasPostsPage && (
-                <Fragment>
-                  <Link href={`/${postsPage.slug}`}>all posts</Link>
-                </Fragment>
-              )}
-              {hasPostsPage && hasProjectsPage && <Fragment>{' or '}</Fragment>}
-              {hasProjectsPage && (
-                <Fragment>
-                  <Link href={`/${projectsPage.slug}`}>all projects</Link>
-                </Fragment>
-              )}
-              {` To log back in, `}
-              <Link href="/login" className='text-purple-700 hover:text-purple-600'>click here</Link>
-              {'.'}
-            </p>
-          </div>
+        <div>
+          <h1>{error || success}</h1>
+          <p>
+            {'What would you like to do next? '}
+            {hasPostsPage && hasProjectsPage && <Fragment>{'Browse '}</Fragment>}
+            {hasPostsPage && (
+              <Fragment>
+                <Link href={`/${postsPage.slug}`}>all posts</Link>
+              </Fragment>
+            )}
+            {hasPostsPage && hasProjectsPage && <Fragment>{' or '}</Fragment>}
+            {hasProjectsPage && (
+              <Fragment>
+                <Link href={`/${projectsPage.slug}`}>all projects</Link>
+              </Fragment>
+            )}
+            {` To log back in, `}
+            <Link href="/login">click here</Link>
+            {'.'}
+          </p>
         </div>
       )}
     </Fragment>
