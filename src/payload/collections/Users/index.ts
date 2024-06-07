@@ -11,14 +11,34 @@ const Users: CollectionConfig = {
   slug: 'users',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'email'],
+    defaultColumns: [
+      'email',
+      'firstname',
+      'middlename',
+      'lastname',
+      'initials',
+      'title',
+      'subsidiary',
+      'supervisor',
+      'department',
+      'birth_date',
+      'type',
+      'employee_status',
+      'job_description',
+      'inactive',
+      'role',
+      'date_conferred',
+      'is_deleted',
+      'location',
+      'lastvisit'
+    ], // Include new fields in admin view
   },
   access: {
-    read: adminsAndUser,
-    create: anyone,
-    update: adminsAndUser,
-    delete: admins,
-    admin: ({ req: { user } }) => checkRole(['admin'], user),
+    read: anyone,
+    create: () => true, // Allow anyone to create posts
+    update: () => true,
+    delete: () => true,
+    admin: ({ req: { user } }) => checkRole(['admin', "user", "supervisor"], user),
   },
   hooks: {
     afterChange: [loginAfterCreate],
@@ -43,18 +63,127 @@ const Users: CollectionConfig = {
           label: 'user',
           value: 'user',
         },
+        {
+          label: 'supervisor',
+          value: 'supervisor',
+        },
+        {
+          label: 'employee',
+          value: 'employee',
+        },
+
       ],
       hooks: {
         beforeChange: [ensureFirstUserIsAdmin],
       },
       access: {
-        read: admins,
-        create: admins,
-        update: admins,
+        read: () => true,
+        create: () => true,
+        update: () => true,
       },
+    },
+    {
+      name: 'email',
+      type: 'email',
+      unique: true,
+    },
+    {
+      name: 'ns_internal_id',
+      label: 'Netsuite Internal Id',
+      type: 'text',
+    },
+    {
+      name: 'firstname',
+      type: 'text',
+    },
+    {
+      name: 'middlename',
+      type: 'text',
+    },
+    {
+      name: 'lastname',
+      type: 'text',
+    },
+    {
+      name: 'initials',
+      type: 'text',
+      maxLength: 10,
+    },
+    {
+      name: 'title',
+      type: 'text',
+    },
+    {
+      name: 'mobilenumber',
+      type: 'number',
+    },
+    {
+      name: 'subsidiary',
+      type: 'text',
+    },
+    {
+      name: 'supervisor',
+      type: 'text',
+    },
+    {
+      name: 'department',
+      type: 'text',
+    },
+    {
+      name: 'birth_date',
+      type: 'date',
+    },
+    {
+      name: 'type',
+      type: 'text',
+    },
+    {
+      name: 'employee_status',
+      type: 'text',
+    },
+    {
+      name: 'job_description',
+      type: 'textarea',
+    },
+    {
+      name: 'date_conferred',
+      type: 'date',
+    },
+    {
+      name: 'is_deleted',
+      type: 'checkbox',
+    },
+    {
+      name: 'location',
+      type: 'text',
+    },
+    {
+      name: 'lastvisit',
+      type: 'date',
+    },
+    {
+      name: 'inactive',
+      type: 'checkbox',
+    },
+    {
+      name: 'isSupervisor',
+      label: 'Is Supervisor?',
+      type: 'radio',
+      options: [
+        {
+          label: 'Yes',
+          value: 'yes',
+        },
+        {
+          label: 'No',
+          value: 'no',
+        },
+      ],
+      defaultValue: 'no',
     },
   ],
   timestamps: true,
 }
+
 
 export default Users

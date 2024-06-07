@@ -56,7 +56,7 @@ export const staticHome: Page = {
       {
         children: [
           {
-            text: 'The code for this template is completely open-source and can be found ',
+            text: 'The code for this template is completely open-source and can be found eee',
           },
           {
             type: 'link',

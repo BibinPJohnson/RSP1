@@ -16,6 +16,9 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
+import  Jobs  from './collections/Jobs'
+import Tasks from './collections/Tasks'
+
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
@@ -23,6 +26,12 @@ import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
+import LoginContent from './globals/LoginContents'
+
+import Logo from './components/graphics/Logo'
+import Icon from './components/graphics/Icon'
+
+
 
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
@@ -34,8 +43,13 @@ dotenv.config({
 
 export default buildConfig({
   admin: {
+    
     user: Users.slug,
     bundler: webpackBundler(),
+    meta: {
+      favicon: '/images/favicon.jpg',
+      ogImage: '/images/favicon.jpg',
+    },
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
@@ -43,6 +57,11 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: [BeforeDashboard],
+
+      graphics: {
+        Logo,
+        Icon,
+      },
     },
     webpack: config => ({
       ...config,
@@ -66,8 +85,8 @@ export default buildConfig({
     },
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
-  globals: [Settings, Header, Footer],
+  collections: [Pages, Posts, Media, Categories,Projects, Users, Comments,Jobs ,Tasks],
+  globals: [Settings, Header, Footer, LoginContent],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
