@@ -2,6 +2,8 @@
 
 .header {
   padding: var(--base) 0;
+  //background-color: #605E5EA3;
+  background-color: #111827;
 }
 
 .wrap {
@@ -12,11 +14,10 @@
 }
 
 .logo {
-  width: 150px;
+  width: auto;
 }
 
-:global([data-theme="light"]) {
-  .logo {
-    filter: invert(1);
-  }
+.header_logo_wrapper {
+  max-width: 75px;
+  max-height: 50px;
 }

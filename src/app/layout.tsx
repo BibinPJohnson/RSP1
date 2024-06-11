@@ -1,35 +1,39 @@
-import React from 'react'
-import { Metadata } from 'next'
+import React from 'react';
+import { Metadata } from 'next';
 
-import { AdminBar } from './_components/AdminBar'
-import { Footer } from './_components/Footer'
-import { Header } from './_components/Header'
-import { Providers } from './_providers'
-import { InitTheme } from './_providers/Theme/InitTheme'
-import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
+import { AdminBar } from './_components/AdminBar';
+import { Footer } from './_components/Footer';
+import Header from './_components/Header'; // Correct import for client component
+import { Providers } from './_providers';
+import { InitTheme } from './_providers/Theme/InitTheme';
+import { mergeOpenGraph } from './_utilities/mergeOpenGraph';
+import Sidebar from './_components/Sidebar';
 
-import './_css/app.scss'
+import './_css/app.scss';
+import './globals.css';
+import './styles/dashboard.css';
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/images/favicon.jpg" sizes="32x32" />
       </head>
       <body>
         <Providers>
-          <AdminBar />
-          {/* @ts-expect-error */}
+          {/* <AdminBar /> */}
           <Header />
-          {children}
-          {/* @ts-expect-error */}
-          <Footer />
+          <div className="flex rsp-sidebar-children-wrap-container">
+            <Sidebar />
+            <div className="flex-1">
+              {children}
+            </div>
+          </div>
         </Providers>
       </body>
     </html>
-  )
+  );
 }
 
 export const metadata: Metadata = {
@@ -39,4 +43,4 @@ export const metadata: Metadata = {
     creator: '@payloadcms',
   },
   openGraph: mergeOpenGraph(),
-}
+};
