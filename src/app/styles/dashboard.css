@@ -91,6 +91,7 @@
     background-color: #B5B5B5;
 }
 
+
 /* Rotate Icon */
 .rotate-180 {
     transform: rotate(180deg);
@@ -100,6 +101,9 @@
 .rotate-0 {
     transform: rotate(0deg);
     transition: transform 0.3s;
+}
+.rsp-sidebar-children-wrap-container{
+    min-height: 100vh;
 }
 /* .rsp-sidebar-children-wrap-container{
     height: 100vw;
@@ -132,24 +136,10 @@
         margin-right: 0rem;
 
     }
-}    
+}  
 
-@media (max-width: 767px){
-    .rsp-dashboard-sidebar-menu {
-        height: auto;
-    }
-}
-@media (max-width: 767px){
-    .rsp-dashboard-sidebar-menu-sub {
-        height: 100%;
-    }
-}
-@media (min-height: 500px){
-    .rsp-sidebar-children-wrap-container{
-height: 100vh;
-    }
-}
 
+/* ripple css codes */
 .rcs-ripple{
 position: absolute;
 top: 2.5rem;

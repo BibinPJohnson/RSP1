@@ -47,13 +47,15 @@ const Sidebar: React.FC = () => {
                 onClick={toggleSidebarCollapseHandler}>
                 <FaAngleRight className={isCollapsedSidebar ? 'rotate-0' : 'rotate-180'} />
             </button>
-            {showRipple &&  <Ripple
+            {/* {showRipple &&  <Ripple
     color="rgba(245,245,245)"
     size={46}
     thickness={10}
     className="absolute"
   />
-  } {/* Render Ripple component conditionally */}
+  } */}
+  
+   {/* Render Ripple component conditionally */}
             <div className="rsp-dashboard-sidebar-menu-sub w-full bg-[#4E5667] text-white flex flex-col items-start py-4">
                 <Link href="/" className={`rsp-dashboard-sidebar-link ${activeTab === '/' ? 'active' : ''}`} onClick={() => handleTabClick('/')}>
                     <FaUser className="icon" />

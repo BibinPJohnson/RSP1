@@ -14,3 +14,4 @@ module.exports = {
     // 'dot-notation': 'warn',
   },
 }
+ 

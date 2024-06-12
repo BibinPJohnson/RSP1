@@ -8,9 +8,9 @@ import Employee from './_components/employee-details'
 
 export default function Page() {
   return (
-    <div>
+    
         <Employee/>
-    </div>
+   
 
   )
 }
