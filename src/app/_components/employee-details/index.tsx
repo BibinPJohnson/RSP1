@@ -37,7 +37,7 @@ const Employee: React.FC = () => {
     const getUsers = async () => {
       try {
         const users = await fetchUsers(); // Fetch users from API
-        console.log("Fetched users:", users);
+        // console.log("Fetched users:", users);
 
         const matchingUsers = users.filter((fetchedUser) => fetchedUser.supervisor === userInfo.nsinternalid); // Filter users by supervisor
         setFilteredUsers(matchingUsers); // Set filtered users
@@ -154,8 +154,8 @@ const Employee: React.FC = () => {
       ) : (
         userInfo.isSupervisor && filteredUsers.length > 0 && (
           <div className="container mx-auto px-4 lg:py-10 md:py-8 sm:py-6 py-6">
-            <div className="max-w-6xl mx-auto bg-gray-200 rounded-lg shadow-lg md:overflow-hidden">
-              <div className="p-6 overflow-x-auto">
+            <div className="max-w-6xl mx-auto bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+              <div className="sm:p-6 md:p-8 lg:p-10 p-4 overflow-x-auto">
                 <div
                   className="flex justify-between items-center cursor-pointer md:mb-0"
                   onClick={() => setShowUsers(!showUsers)}
@@ -169,17 +169,19 @@ const Employee: React.FC = () => {
                   <div className="py-4">
                     <div className="hidden md:block">
                       {/* Table View for Desktop */}
-                      <table className="w-full text-md bg-white shadow-md rounded mb-4">
-                        <tbody>
-                          <tr className="border-b">
+                      <table className="w-full text-md bg-white shadow-md rounded-lg mb-4">
+                        <thead className="bg-gray-200">
+                          <tr>
                             <th className="text-left p-3 px-5">ID</th>
                             <th className="text-left p-3 px-5">Name</th>
                             <th className="text-left p-3 px-5">Email</th>
                             <th className="text-left p-3 px-5">Post</th>
                           </tr>
+                        </thead>
+                        <tbody>
                           {paginatedUsers.map((user) => (
-                            <tr key={user.id} className="border-b hover:bg-orange-100 bg-gray-100">
-                              <td className="p-3 px-5">{user.id}</td>
+                            <tr key={user.id} className="border-b hover:bg-gray-50">
+                              <td className="p-3 px-5">{user.ns_internal_id}</td>
                               <td className="p-3 px-5">{user.name}</td>
                               <td className="p-3 px-5">{user.email}</td>
                               <td className="p-3 px-5">{user.title}</td>
@@ -191,25 +193,25 @@ const Employee: React.FC = () => {
                     <div className="block md:hidden">
                       {/* Card View for Mobile */}
                       {paginatedUsers.map((user) => (
-                        <div key={user.id} className="bg-white hover:bg-orange-100 shadow-lg rounded-lg mb-4 p-6 border border-gray-200">
+                        <div key={user.id} className="bg-white shadow-md rounded-lg mb-4 p-4 border border-gray-200">
                           <div className="flex items-center space-x-2 mb-2">
                             <FaIdBadge className="text-gray-600" />
-                            <p className="font-semibold text-gray-700">ID:</p>
-                            <p className="text-gray-900">{user.id}</p>
+                            <p className="font-semibold text-gray-700 hidden sm:inline">ID:</p>
+                            <p className="text-gray-900">{user.ns_internal_id}</p>
                           </div>
                           <div className="flex items-center space-x-2 mb-2">
                             <FaUser className="text-gray-600" />
-                            <p className="font-semibold text-gray-700">Name:</p>
+                            <p className="font-semibold text-gray-700 hidden sm:inline">Name:</p>
                             <p className="text-gray-900">{user.name}</p>
                           </div>
                           <div className="flex items-center space-x-2 mb-2">
                             <FaEnvelope className="text-gray-600" />
-                            <p className="font-semibold text-gray-700">Email:</p>
+                            <p className="font-semibold text-gray-700 hidden sm:inline">Email:</p>
                             <p className="text-gray-900">{user.email}</p>
                           </div>
                           <div className="flex items-center space-x-2 mb-2">
                             <FaBriefcase className="text-gray-600" />
-                            <p className="font-semibold text-gray-700">Post:</p>
+                            <p className="font-semibold text-gray-700 hidden sm:inline">Post:</p>
                             <p className="text-gray-900">{user.title}</p>
                           </div>
                         </div>

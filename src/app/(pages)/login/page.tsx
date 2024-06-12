@@ -1,35 +1,30 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-
-import { Gutter } from '../../_components/Gutter'
-import { RenderParams } from '../../_components/RenderParams'
-import { getMeUser } from '../../_utilities/getMeUser'
-import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
+import { Gutter } from '../..//_components/Gutter'
+import { RenderParams } from '../..//_components/RenderParams'
+import { getMeUser } from '../..//_utilities/getMeUser'
+import { mergeOpenGraph } from '../..//_utilities/mergeOpenGraph'
 import LoginForm from './LoginForm'
-import { getProducts } from '../../_api/fetchLogin'
+import { getProducts } from '../..//_api/fetchLogin'
 
 import classes from './index.module.scss'
 import "../../styles/login.css"
 
 export default async function Login() {
   const data = await getProducts();
-  
-  
+
+  // Assuming data is a single object, not an array
   const loginData = {
     heading: data.heading,
     content: data.content,
   };
 
-  // console.log("login data",loginData);
-
+  // console.log("login data", loginData);
 
   await getMeUser({
     validUserRedirect: `/account?warning=${encodeURIComponent('You are already logged in.')}`,
   })
-  
-
-  
 
   return (
     <Gutter className={`${classes.login} p-[0!important]`}>

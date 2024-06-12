@@ -9,7 +9,6 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
-
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
 import { Media } from './collections/Media'
@@ -18,6 +17,9 @@ import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
 import  Jobs  from './collections/Jobs'
 import Tasks from './collections/Tasks'
+import Timegrid from './collections/TimeGrid'
+import Timesheet from './collections/Timesheet'
+import Non_Working_Days from './collections/Non_Working_Days'
 
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
@@ -30,6 +32,7 @@ import LoginContent from './globals/LoginContents'
 
 import Logo from './components/graphics/Logo'
 import Icon from './components/graphics/Icon'
+import Leave_Days from './collections/Leave_Days'
 
 
 
@@ -85,7 +88,7 @@ export default buildConfig({
     },
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Media, Categories,Projects, Users, Comments,Jobs ,Tasks],
+  collections: [Pages, Posts, Media, Categories,Projects, Users, Comments,Jobs ,Tasks,Timegrid, Timesheet,Non_Working_Days,Leave_Days],
   globals: [Settings, Header, Footer, LoginContent],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

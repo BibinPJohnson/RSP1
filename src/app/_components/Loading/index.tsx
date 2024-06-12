@@ -5,7 +5,7 @@ function Loading() {
   return (
     <div style={styles.loaderContainer}>
       <Wave
-        color="rgba(116,136,202,1)"
+        color="#111827"
         size={76}
         thickness={15}
       />
@@ -18,9 +18,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
-    width: '100vw',
+    height:'100vh'
   },
-};
+}
 
 export default Loading;
